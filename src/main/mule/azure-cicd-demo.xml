@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a2e88492-4ac2-4e7e-bc4e-426f5dbc6937" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="15b800f2-9cd2-4ff5-943d-d396f64e72af" basePath="/api" >
+		<http:request-connection host="training-american-ws.cloudhub.io" />
+	</http:request-config>
+	<flow name="azure-cicd-demoFlow" doc:id="efc56318-53d3-43a6-a4c7-78cf2ceeb905" >
+		<http:listener doc:name="Listener" doc:id="e506b73f-c931-42c8-b676-c93b2bc251ff" config-ref="HTTP_Listener_config" path="/azuredemo"/>
+		<http:request method="GET" doc:name="Request" doc:id="5ce0a3ec-de57-4777-988a-a738f19c8a6e" config-ref="HTTP_Request_configuration" path="/flights"/>
+		<logger level="INFO" doc:name="Logger" doc:id="dde80118-d425-488c-93ab-a240a7629f15" message="#[payload]"/>
+	</flow>
+</mule>
