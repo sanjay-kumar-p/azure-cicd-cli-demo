@@ -13,6 +13,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="azure-cicd-demoFlow" doc:id="efc56318-53d3-43a6-a4c7-78cf2ceeb905" >
 		<http:listener doc:name="Listener" doc:id="e506b73f-c931-42c8-b676-c93b2bc251ff" config-ref="HTTP_Listener_config" path="/azuredemo"/>
 		<http:request method="GET" doc:name="Request" doc:id="5ce0a3ec-de57-4777-988a-a738f19c8a6e" config-ref="HTTP_Request_configuration" path="/flights"/>
-		<logger level="INFO" doc:name="Response Payload" doc:id="dde80118-d425-488c-93ab-a240a7629f15" message="#['The response payload is:']#[payload]"/>
+		<logger level="INFO" doc:name="Response Payload" doc:id="dde80118-d425-488c-93ab-a240a7629f15" message="#['The response is:']#[payload]"/>
 	</flow>
 </mule>
