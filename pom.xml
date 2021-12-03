@@ -105,6 +105,7 @@
 						<runCoverage>true</runCoverage>
 						<formats>
 							<format>html</format>
+							<format>json</format>
 						</formats>
 					</coverage>
 				</configuration>
