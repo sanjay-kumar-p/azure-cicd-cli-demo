@@ -1,0 +1,12 @@
+{
+	"workday": {
+		"host": "wd3-impl-services1.workday.com",
+		"basePath": "ccx/service/customreport2",
+		"username": "Mulesoft",
+		"tenantName": "shell14",
+		"token": {
+			"path": "/ccx/oauth2/shell14/token",
+			"grantType": "refresh_token"
+		}
+	}
+}
