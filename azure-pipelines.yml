@@ -14,26 +14,16 @@ steps:
   displayName: 'Run a one-line script'
   
 - powershell: |
-   [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
-   $Form = @{
-       scope      = 'https://vault.azure.net/.default'
-       grant_type   = 'client_credentials'
-       client_id      = '8dba1799-2c69-4c7e-9ee8-c7ee00187366'
-       client_secret     = 'JWO7Q~goiI2tAbm4mKXBkHP53DE4cH.hrN4I9'
-   }
-   #Retriving the token
-   $TokenURI = "https://login.microsoftonline.com/fa5d3b7d-af39-47ca-a166-3df91f060de4/oauth2/v2.0/token"
-   Write-Output "Your TokenURI is: ($TokenURI.value)"
-   $Response = Invoke-RestMethod -Uri $TokenURI -Method GET -ContentType "application/json" -Form $Form
-   Write-Output "Your Response is: ($Response.value)"
-   $KeyVaultToken = $Response.access_token
-   Write-Output "Your Token is: ($KeyVaultToken)"
-   $web = "SomeWeb"
-   Write-Host "##vso[task.setvariable variable=AccessToken;isOutput=true]hello"
-   Write-Host "##vso[task.setvariable variable=MyWebEnv;isOutput=true]$web"
-   Write-Output "AccessToken is: ($AccessToken)"
-   Write-Output "MyWebEnv is: ($MyWebEnv)"
-  displayName: 'Retrieve Access Token'
+   $web ="some-web"
+   $app ="some-app"
+   Write-Host "##vso[task.setvariable variable=MyWebEnv;]$web"
+   Write-Host "##vso[task.setvariable variable=MyAppEnv;]$app"
+  displayName: 'Output Variables'
+
+- powershell: |
+   Write-Host "Set Web to $(MyWebEnv)"
+   Write-Host "Set App to $(MyAppEnv)" 
+  displayName: 'Output Variables Print'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
