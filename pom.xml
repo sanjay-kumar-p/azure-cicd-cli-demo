@@ -161,7 +161,29 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+  			<id>dev</id>
+  			<url>https://pkgs.dev.azure.com/SanjayKumar3/3701563a-62b8-4820-98fd-5410e40b03eb/_packaging/dev/maven/v1</url>
+  			<releases>
+    				<enabled>true</enabled>
+  			</releases>
+  			<snapshots>
+   				 <enabled>true</enabled>
+  			</snapshots>
+		</repository>
 	</repositories>
+	<distributionManagement>
+				<repository>
+					<id>mule-artifacts</id>
+					<url>https://pkgs.dev.azure.com/SanjayKumar3/3701563a-62b8-4820-98fd-5410e40b03eb/_packaging/dev/maven/v1</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+	</distributionManagement>
 
 	<pluginRepositories>
 		<pluginRepository>
